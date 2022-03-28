@@ -3,7 +3,7 @@ import pyttsx3
 from main import myname
 
 print("Loading your AI personal assistant " + myname)
-frame.Structure.speak("Loading your AI personal assistant " + myname)
+speak("Loading your AI personal assistant " + myname)
 
 engine=pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
