@@ -7,3 +7,4 @@
 
 
 https://towardsdatascience.com/how-to-build-your-own-ai-personal-assistant-using-python-f57247b4494b
+https://www.freecodecamp.org/news/python-project-how-to-build-your-own-jarvis-using-python/

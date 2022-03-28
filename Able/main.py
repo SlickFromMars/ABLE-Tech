@@ -1,53 +1,33 @@
-import webbrowser
-import time
-import datetime
-from frame.Remember import yourname
-import frame.Structure
+import pyttsx3
+from decouple import config
 
-# import frame.Structure
+USERNAME = config('USER')
+BOTNAME = config('BOTNAME')
 
 
-def speakprint(text):
+engine = pyttsx3.init('sapi5')
+
+# Set Rate
+engine.setProperty('rate', 190)
+
+# Set Volume
+engine.setProperty('volume', 1.0)
+
+# Set Voice (Female)
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
+
+
+# Text to Speech Conversion
+def speak(text):
+    """Used to speak whatever text is passed to it"""
+
     print(text)
-    # frame.Structure.speak(text)
+    engine.say(text)
+    engine.runAndWait()
 
-
-def wishme():
-    hour = datetime.datetime.now().hour
-    if hour < 12:
-        speakprint("Good morning, " + yourname)
-    elif hour < 18:
-        speakprint("Good afternoon, " + yourname)
-    else:
-        speakprint("Good evening, " + yourname)
-
-
-myname = 'ABLE'
-
-wishme()
 
 if __name__ == '__main__':
-
-    while True:
-        statement = frame.Structure.takeCommand()
-        # statement = input("Enter your command: ").lower()
-        statement = statement.lower()
-        if statement == 0:
-            continue
-
-        if "good bye" in statement or "ok bye" in statement or "stop" in statement:
-            speakprint(myname + ' is shutting down, good bye.')
-            break
-
-        elif 'search' in statement:
-            statement = statement.replace("search", "")
-            webbrowser.open_new_tab(statement)
-            time.sleep(5)
-
-        elif statement == 'rickroll':
-            webbrowser.open_new_tab('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
-
-        elif 'who are you' in statement or 'what can you do' in statement:
-            speakprint('I am ' + myname + ', an AI created by master Slick.')
-            speakprint('ABLE stands for Artifical Buddy Lacking Entity')
-            speakprint('Get it? Because you are my only buddy?')
+    print('\nEngine Data:')
+    print(engine)
+    print(voices)
