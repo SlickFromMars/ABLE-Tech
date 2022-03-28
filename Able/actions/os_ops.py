@@ -2,12 +2,12 @@ import os
 import subprocess as sp
 
 paths = {
-    'discord': "C:\\Users\\wchurchill_bnsstuden\\AppData\\Local\\Discord\\app-1.0.9003\\Discord.exe"
+    'foldverse': "C:\\Users\\minec\\Documents\\Unreal Projects\\FoldverseThree\\FoldverseThree.uproject"
 }
 
 
-def open_discord():
-    os.startfile(paths['discord'])
+def open_project():
+    os.startfile(paths['foldverse'])
 
 
 def open_cmd():
