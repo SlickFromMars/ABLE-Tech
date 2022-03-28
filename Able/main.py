@@ -2,6 +2,7 @@ import webbrowser
 import time
 import datetime
 from frame.Remember import yourname
+import frame.Structure
 
 # import frame.Structure
 
@@ -28,8 +29,8 @@ wishme()
 if __name__ == '__main__':
 
     while True:
-        # speakprint("Tell me how can I help you now?")
-        statement = input("Enter your command: ").lower()  # frame.Structure.takeCommand()
+        statement = frame.Structure.takeCommand()
+        # statement = input("Enter your command: ").lower()
         statement = statement.lower()
         if statement == 0:
             continue
