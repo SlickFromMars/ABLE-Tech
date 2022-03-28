@@ -1,0 +1,9 @@
+ - Speech recog for different people
+ - Ability to run coding processes (ex. lime test windows)
+ - Tab slasher and ram helper
+ - Custom executable
+ - Background process???
+
+
+
+https://towardsdatascience.com/how-to-build-your-own-ai-personal-assistant-using-python-f57247b4494b
