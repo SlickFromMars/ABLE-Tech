@@ -1,3 +1,5 @@
+import webbrowser
+
 import requests
 import wikipedia
 import pywhatkit as kit
@@ -42,3 +44,6 @@ def get_random_joke():
     }
     res = requests.get("https://icanhazdadjoke.com/", headers=headers).json()
     return res["joke"]
+
+def rick_roll():
+    webbrowser.open_new_tab("https://www.youtube.com/watch?v=dQw4w9WgXcQ")

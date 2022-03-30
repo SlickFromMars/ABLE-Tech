@@ -5,13 +5,13 @@ from random import choice
 from utils import opening_text
 from datetime import datetime
 import actions.greet
-import actions.input
 import actions.online_ops
 import actions.os_ops
-import requests
 
 USERNAME = config('USER')
 BOTNAME = config('BOTNAME')
+
+MUTED = 0
 
 
 engine = pyttsx3.init('sapi5')
@@ -32,8 +32,9 @@ def speak(text):
     """Used to speak whatever text is passed to it"""
 
     print(text)
-    engine.say(text)
-    engine.runAndWait()
+    if MUTED == 0:
+        engine.say(text)
+        engine.runAndWait()
 
 
 def take_user_input():
@@ -78,8 +79,6 @@ if __name__ == '__main__':
 
         elif "trending movies" in query:
             speak(f"Some of the trending movies are: {actions.online_ops.get_trending_movies()}")
-            speak("For your convenience, I am printing it on the screen sir.")
-            print(*actions.online_ops.get_trending_movies(), sep='\n')
 
         elif 'my ip address' in query:
             ip_address = actions.online_ops.find_my_ip()
@@ -104,3 +103,35 @@ if __name__ == '__main__':
                 print(f"Description: {weather}\nTemperature: {temperature}\nFeels like: {feels_like}")
             except Exception:
                 speak("Sorry sir, I could not find the weather.")
+
+        elif 'open command prompt' in query:
+            actions.os_ops.open_cmd()
+            speak("Opening command prompt now sir.")
+
+        elif 'rickroll me' in query:
+            speak("Enjoy the song, sir.")
+            actions.online_ops.rick_roll()
+
+        elif 'toggle mute' in query:
+            speak("Toggling mute, sir.")
+            if MUTED == 0:
+                MUTED = 1
+            else:
+                MUTED = 0
+
+        elif 'mute' in query:
+            if MUTED == 0:
+                speak("Muting now sir.")
+                MUTED = 1
+            else:
+                speak("I am already muted sir.")
+
+        elif 'unmute' in query:
+            if MUTED == 1:
+                MUTED = 0
+                speak("Unmuting now sir.")
+            else:
+                speak("I am already unmuted sir.")
+
+        else:
+            speak("There was no action associated with your command.")
